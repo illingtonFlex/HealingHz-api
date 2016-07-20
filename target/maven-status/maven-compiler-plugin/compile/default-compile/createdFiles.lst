@@ -1,3 +1,6 @@
 HealingHz/JerseyConfig.class
-HealingHz/HealingHzApiApplication.class
 HealingHz/HealingHzEndpoint.class
+HealingHz/JacksonObjectMapperProvider.class
+HealingHz/ValidationConfigurationContextResolver.class
+HealingHz/ValidationConfigurationContextResolver$CustomParameterNameProvider.class
+HealingHz/HealingHzApiApplication.class
