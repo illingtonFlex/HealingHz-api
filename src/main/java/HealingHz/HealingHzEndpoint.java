@@ -2,19 +2,18 @@ package HealingHz;
 
 import org.springframework.stereotype.Component;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 @Component
 @Path("/submitSolution")
 public class HealingHzEndpoint
 {
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getMessage()
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response consumeSubmission(String inJson)
     {
-        return new String("Jersey: Up and Running!");
+        return Response.status(200).entity(inJson).build();
     }
 }
