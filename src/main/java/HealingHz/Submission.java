@@ -10,9 +10,38 @@ import java.util.Date;
 public class Submission
 {
     @Id
-    private String Id;
+    private String id;
+    private String chordName;
+    private String outcome;
 
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private Date createdDate;
+    public Submission() {}
 
+    public Submission(String inChordName, String inOutcome)
+    {
+        this.chordName = inChordName;
+        this.outcome = inOutcome;
+    }
+
+    public String getChordName() {
+        return chordName;
+    }
+
+    public void setChordName(String chordName) {
+        this.chordName = chordName;
+    }
+
+    public String getOutcome() {
+        return outcome;
+    }
+
+    public void setOutcome(String outcome) {
+        this.outcome = outcome;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "Submission[id=%s, chordName='%s', outcome='%s']",
+                id, chordName, outcome);
+    }
 }

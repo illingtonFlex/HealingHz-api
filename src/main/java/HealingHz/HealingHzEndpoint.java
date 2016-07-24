@@ -12,8 +12,8 @@ public class HealingHzEndpoint
 {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response consumeSubmission(String inJson)
+    public Response consumeSubmission(Submission submission)
     {
-        return Response.status(200).entity(inJson).build();
+        return Response.status(200).entity(submission.toString()).build();
     }
 }
