@@ -22,24 +22,29 @@ public class Submission
         this.outcome = inOutcome;
     }
 
-    public String getChordName() {
+    public String getChordName()
+    {
         return chordName;
     }
 
-    public void setChordName(String chordName) {
+    public void setChordName(String chordName)
+    {
         this.chordName = chordName;
     }
 
-    public String getOutcome() {
+    public String getOutcome()
+    {
         return outcome;
     }
 
-    public void setOutcome(String outcome) {
+    public void setOutcome(String outcome)
+    {
         this.outcome = outcome;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return String.format(
                 "Submission[id=%s, chordName='%s', outcome='%s']",
                 id, chordName, outcome);
