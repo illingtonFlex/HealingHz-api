@@ -14,6 +14,7 @@ public class JerseyConfig extends ResourceConfig
     {
         packages("HealingHz");
         register(HealingHzEndpoint.class);
+        register(CORSResponseFilter.class);
 
         //logging
         register(new LoggingFilter(Logger.getLogger(JerseyConfig.class.getName()), true));
