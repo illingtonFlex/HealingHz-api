@@ -7,21 +7,25 @@ import javax.ws.rs.ext.ContextResolver;
 import javax.ws.rs.ext.Provider;
 
 @Provider
-public class JacksonObjectMapperProvider implements ContextResolver<ObjectMapper> {
+public class JacksonObjectMapperProvider implements ContextResolver<ObjectMapper>
+{
 
     final ObjectMapper defaultObjectMapper;
 
-    public JacksonObjectMapperProvider() {
+    public JacksonObjectMapperProvider()
+    {
         defaultObjectMapper = createDefaultMapper();
     }
 
     @Override
-    public ObjectMapper getContext(final Class<?> type) {
+    public ObjectMapper getContext(final Class<?> type)
+    {
         return defaultObjectMapper;
     }
 
 
-    private static ObjectMapper createDefaultMapper() {
+    private static ObjectMapper createDefaultMapper()
+    {
         final ObjectMapper result = new ObjectMapper();
         result.enable(SerializationFeature.INDENT_OUTPUT);
 

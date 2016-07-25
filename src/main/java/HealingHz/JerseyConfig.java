@@ -23,8 +23,5 @@ public class JerseyConfig extends ResourceConfig
         register(JacksonObjectMapperProvider.class);
         register(JacksonFeature.class);
 
-        //Bean validation
-        register(ValidationConfigurationContextResolver.class);
-
     }
 }

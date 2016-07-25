@@ -1,5 +1,6 @@
 package HealingHz;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.*;
@@ -10,10 +11,15 @@ import javax.ws.rs.core.Response;
 @Path("/submitSolution")
 public class HealingHzEndpoint
 {
+    @Autowired
+    private SubmissionRepository repository;
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response consumeSubmission(String inJson)
+    public Response consumeSubmission(Submission submission)
     {
-        return Response.status(200).entity(inJson).build();
+        submission = repository.save(submission);
+
+        return Response.status(200).entity(submission.toString()).build();
     }
 }
