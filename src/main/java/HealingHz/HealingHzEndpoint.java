@@ -1,5 +1,6 @@
 package HealingHz;
 
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,6 +21,6 @@ public class HealingHzEndpoint
     {
         submission = repository.save(submission);
 
-        return Response.status(200).entity(submission.toString()).build();
+        return Response.status(200).entity(new Gson().toJson(submission)).build();
     }
 }
