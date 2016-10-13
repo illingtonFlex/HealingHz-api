@@ -1,5 +1,7 @@
 package HealingHz;
 
+import HealingHz.rest.SubmitSolution;
+import HealingHz.rest.TestPlanResource;
 import org.glassfish.jersey.filter.LoggingFilter;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
@@ -13,7 +15,8 @@ public class JerseyConfig extends ResourceConfig
     public JerseyConfig()
     {
         packages("HealingHz");
-        register(HealingHzEndpoint.class);
+        register(SubmitSolution.class);
+        register(TestPlanResource.class);
         register(CORSResponseFilter.class);
 
         //logging

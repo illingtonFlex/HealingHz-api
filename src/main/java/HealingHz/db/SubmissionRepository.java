@@ -1,5 +1,6 @@
-package HealingHz;
+package HealingHz.db;
 
+import HealingHz.model.Submission;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 

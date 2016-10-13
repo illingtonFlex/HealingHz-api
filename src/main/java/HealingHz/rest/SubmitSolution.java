@@ -1,5 +1,7 @@
-package HealingHz;
+package HealingHz.rest;
 
+import HealingHz.model.Submission;
+import HealingHz.db.SubmissionRepository;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,7 +12,7 @@ import javax.ws.rs.core.Response;
 
 @Component
 @Path("/submitSolution")
-public class HealingHzEndpoint
+public class SubmitSolution
 {
     @Autowired
     private SubmissionRepository repository;
