@@ -2,9 +2,6 @@ package HealingHz.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import java.util.Date;
 import java.util.List;
 
 @Document(collection = "HealingHzSubmissions")

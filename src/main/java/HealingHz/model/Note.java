@@ -1,7 +1,10 @@
 package HealingHz.model;
 
+import javax.validation.constraints.NotNull;
+
 public class Note
 {
+    @NotNull
     private String name;
     private int pitchIndex;
 

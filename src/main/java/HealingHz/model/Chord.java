@@ -1,10 +1,17 @@
 package HealingHz.model;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Arrays;
 
 public class Chord
 {
+    @NotNull
     private String name;
+
+    @Valid
+    @Size(min=3, max=5)
     private Note[] notes;
 
     private Chord()

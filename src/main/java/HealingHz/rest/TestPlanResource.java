@@ -5,6 +5,8 @@ import HealingHz.model.HealingHzResponseEntity;
 import HealingHz.model.TestPlan;
 import org.springframework.stereotype.Component;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -27,25 +29,26 @@ public class TestPlanResource
     @Produces(MediaType.APPLICATION_JSON)
     public Response getTestPlan(@PathParam("testPlanId") String id)
     {
-        HealingHzResponseEntity hhre =
-                new HealingHzResponseEntity(Response.Status.NOT_FOUND, null, String.format("TestPlan id %s not found", id));
+        HealingHzResponseEntity responseEntity =
+                new HealingHzResponseEntity(Response.Status.NOT_FOUND, null,
+                        String.format("TestPlan id %s not found", id));
 
         Optional<TestPlan> testPlan = Optional.ofNullable(repository.findById(id));
 
         if(testPlan.isPresent())
         {
-            hhre = new HealingHzResponseEntity(Response.Status.OK, testPlan.get(), "Success");
+            responseEntity = new HealingHzResponseEntity(Response.Status.OK, testPlan.get(), "Success");
         }
 
-        return Response.status(hhre.getStatus()).entity(hhre).build();
+        return Response.status(responseEntity.getStatus()).entity(responseEntity).build();
     }
 
     @GET
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getTestPlan()
+    public Response getAllTestPlans()
     {
-        HealingHzResponseEntity hhre =
+        HealingHzResponseEntity responseEntity =
                 new HealingHzResponseEntity(Response.Status.OK, null, "ERROR");
 
 
@@ -53,26 +56,26 @@ public class TestPlanResource
 
         if(testPlans.isPresent())
         {
-            hhre = new HealingHzResponseEntity(Response.Status.OK,
+            responseEntity = new HealingHzResponseEntity(Response.Status.OK,
                     testPlans.get(), String.format("%s test plans found.", testPlans.get().size()));
         }
 
-        return Response.status(hhre.getStatus()).entity(hhre).build();
+        return Response.status(responseEntity.getStatus()).entity(responseEntity).build();
     }
 
     @POST
     @Path("/new")
     @Consumes (MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response saveNewTestPlan(TestPlan testPlan)
+    public Response saveNewTestPlan(@Valid TestPlan testPlan)
     {
-        HealingHzResponseEntity hhre =
+        HealingHzResponseEntity responseEntity =
                     new HealingHzResponseEntity(Response.Status.ACCEPTED, null, "Test plan accepted.");
 
         testPlan = repository.save(testPlan);
 
-        hhre.setEntity(testPlan);
+        responseEntity.setEntity(testPlan);
 
-        return Response.status(Response.Status.ACCEPTED).entity(hhre).build();
+        return Response.status(Response.Status.ACCEPTED).entity(responseEntity).build();
     }
 }
