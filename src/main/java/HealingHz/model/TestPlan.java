@@ -23,11 +23,12 @@ public class TestPlan
 
     public TestPlan()
     {
-
+        id = "";
     }
 
     public TestPlan(String name, List<Chord> chords)
     {
+        this();
         this.name = name;
         this.chords = chords;
     }

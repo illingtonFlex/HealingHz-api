@@ -21,7 +21,6 @@ import javax.ws.rs.core.Response;
 import java.util.Arrays;
 import java.util.Collections;
 
-import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
 
 @RunWith(SpringRunner.class)
