@@ -1,10 +1,10 @@
 package HealingHz.rest;
 
-import HealingHz.db.TestPlanRepository;
+import HealingHz.db.CurriculumRepository;
 import HealingHz.model.Chord;
 import HealingHz.model.HealingHzResponseEntity;
 import HealingHz.model.Note;
-import HealingHz.model.TestPlan;
+import HealingHz.model.Curriculum;
 import com.google.gson.Gson;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,12 +33,12 @@ public class PostNewTestPlan
     private TestRestTemplate restTemplate;
 
     @MockBean(name="testPlanRepository")
-    private TestPlanRepository mockRepo;
+    private CurriculumRepository mockRepo;
 
     @Before
     public void setup()
     {
-        TestPlan myPlan = new TestPlan();
+        Curriculum myPlan = new Curriculum();
         myPlan.setId("1234");
 
     }
@@ -48,7 +48,7 @@ public class PostNewTestPlan
     {
         Chord chord = new Chord("My Chord", new Note[]{new Note("A", 0), new Note("B", 1), new Note("C", 2)});
 
-        TestPlan planToPost = new TestPlan();
+        Curriculum planToPost = new Curriculum();
         planToPost.setName("MyPlan");
         planToPost.setChords(Arrays.asList(chord));
 
@@ -75,7 +75,7 @@ public class PostNewTestPlan
     {
         Chord chord = new Chord("My Chord", new Note[]{new Note("A", 0), new Note("B", 1), new Note("C", 2)});
 
-        TestPlan planToPost = new TestPlan();
+        Curriculum planToPost = new Curriculum();
         planToPost.setName("MyPlan");
         planToPost.setChords(Arrays.asList(chord));
 

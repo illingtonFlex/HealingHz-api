@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Document(collection = "HealingHzTestPlans")
-public class TestPlan
+public class Curriculum
 {
     @Id
     private String id;
@@ -21,12 +21,12 @@ public class TestPlan
     @Valid
     private List<Chord> chords;
 
-    public TestPlan()
+    public Curriculum()
     {
         id = "";
     }
 
-    public TestPlan(String name, List<Chord> chords)
+    public Curriculum(String name, List<Chord> chords)
     {
         this();
         this.name = name;
@@ -68,11 +68,11 @@ public class TestPlan
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TestPlan testPlan = (TestPlan) o;
+        Curriculum curriculum = (Curriculum) o;
 
-        if (!getId().equals(testPlan.getId())) return false;
-        if (!getName().equals(testPlan.getName())) return false;
-        return getChords().equals(testPlan.getChords());
+        if (!getId().equals(curriculum.getId())) return false;
+        if (!getName().equals(curriculum.getName())) return false;
+        return getChords().equals(curriculum.getChords());
 
     }
 

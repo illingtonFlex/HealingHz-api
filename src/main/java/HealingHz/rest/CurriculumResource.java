@@ -1,8 +1,8 @@
 package HealingHz.rest;
 
-import HealingHz.db.TestPlanRepository;
+import HealingHz.db.CurriculumRepository;
 import HealingHz.model.HealingHzResponseEntity;
-import HealingHz.model.TestPlan;
+import HealingHz.model.Curriculum;
 import org.springframework.stereotype.Component;
 
 import javax.validation.Valid;
@@ -13,26 +13,26 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-@Path("testPlan")
-public class TestPlanResource
+@Path("curriculum")
+public class CurriculumResource
 {
-    private TestPlanRepository repository;
+    private CurriculumRepository repository;
 
-    public TestPlanResource(TestPlanRepository repo)
+    public CurriculumResource(CurriculumRepository repo)
     {
         this.repository = repo;
     }
 
     @GET
-    @Path("/{testPlanId}")
+    @Path("/{curriculumId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getTestPlan(@PathParam("testPlanId") String id)
+    public Response getTestPlan(@PathParam("curriculumId") String id)
     {
         HealingHzResponseEntity responseEntity =
                 new HealingHzResponseEntity(Response.Status.NOT_FOUND, null,
                         String.format("TestPlan id %s not found", id));
 
-        Optional<TestPlan> testPlan = Optional.ofNullable(repository.findById(id));
+        Optional<Curriculum> testPlan = Optional.ofNullable(repository.findById(id));
 
         if(testPlan.isPresent())
         {
@@ -51,12 +51,12 @@ public class TestPlanResource
                 new HealingHzResponseEntity(Response.Status.OK, null, "ERROR");
 
 
-        Optional<List<TestPlan>> testPlans = Optional.ofNullable(repository.findAll());
+        Optional<List<Curriculum>> curriculums = Optional.ofNullable(repository.findAll());
 
-        if(testPlans.isPresent())
+        if(curriculums.isPresent())
         {
             responseEntity = new HealingHzResponseEntity(Response.Status.OK,
-                    testPlans.get(), String.format("%s test plans found.", testPlans.get().size()));
+                    curriculums.get(), String.format("%s test plans found.", curriculums.get().size()));
         }
 
         return Response.status(responseEntity.getStatus()).entity(responseEntity).build();
@@ -66,14 +66,14 @@ public class TestPlanResource
     @Path("/new")
     @Consumes (MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response saveNewTestPlan(@Valid TestPlan testPlan)
+    public Response saveNewTestPlan(@Valid Curriculum curriculum)
     {
         HealingHzResponseEntity responseEntity =
                     new HealingHzResponseEntity(Response.Status.ACCEPTED, null, "Test plan accepted.");
 
-        testPlan = repository.save(testPlan);
+        curriculum = repository.save(curriculum);
 
-        responseEntity.setEntity(testPlan);
+        responseEntity.setEntity(curriculum);
 
         return Response.status(Response.Status.ACCEPTED).entity(responseEntity).build();
     }
