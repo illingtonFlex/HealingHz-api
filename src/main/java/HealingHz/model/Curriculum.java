@@ -8,7 +8,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-@Document(collection = "HealingHzTestPlans")
+@Document(collection = "HHCurriculums")
 public class Curriculum
 {
     @Id
@@ -23,7 +23,6 @@ public class Curriculum
 
     public Curriculum()
     {
-        id = "";
     }
 
     public Curriculum(String name, List<Chord> chords)

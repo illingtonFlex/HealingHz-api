@@ -51,12 +51,12 @@ public class CurriculumResource
                 new HealingHzResponseEntity(Response.Status.OK, null, "ERROR");
 
 
-        Optional<List<Curriculum>> curriculums = Optional.ofNullable(repository.findAll());
+        Optional<List<Curriculum>> curriculum = Optional.ofNullable(repository.findAll());
 
-        if(curriculums.isPresent())
+        if(curriculum.isPresent())
         {
             responseEntity = new HealingHzResponseEntity(Response.Status.OK,
-                    curriculums.get(), String.format("%s test plans found.", curriculums.get().size()));
+                    curriculum.get(), String.format("%s test plans found.", curriculum.get().size()));
         }
 
         return Response.status(responseEntity.getStatus()).entity(responseEntity).build();
